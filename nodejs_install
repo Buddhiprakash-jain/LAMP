@@ -1,0 +1,26 @@
+ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+ 
+ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+ 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+command -v nvm
+
+nvm install 16
+
+node -v
+
+sudo ln -s $(which npm) /usr/bin/
+
+sudo ln -s $(which node) /usr/bin/
+
+npm install -g serve
+
+sudo ln -s $(which serve) /usr/bin/
+
+python /root/mysite/manage.py runserver 0.0.0.0:8000 > /dev/null &
+
+serve -s /var/www/build/ > /dev/null &
+
+npm start > /dev/null &
+
